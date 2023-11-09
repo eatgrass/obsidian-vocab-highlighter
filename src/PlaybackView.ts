@@ -1,27 +1,34 @@
 import { ItemView, WorkspaceLeaf } from "obsidian";
 
-export const VIEW_TYPE_PLAYBACK = "playback-view";
+import Component from "./Component.svelte";
+
+export const VIEW_TYPE_PLAYBACK = "example-view";
 
 export class PlaybackView extends ItemView {
-  constructor(leaf: WorkspaceLeaf) {
-    super(leaf);
-  }
+	component: Component | null = null;
 
-  getViewType() {
-    return VIEW_TYPE_PLAYBACK;
-  }
+	constructor(leaf: WorkspaceLeaf) {
+		super(leaf);
+	}
 
-  getDisplayText() {
-    return "Play";
-  }
+	getViewType() {
+		return VIEW_TYPE_PLAYBACK;
+	}
 
-  async onOpen() {
-    const container = this.containerEl.children[1];
-    container.empty();
-    container.createEl("h4", { text: "player test" });
-  }
+	getDisplayText() {
+		return "Playback";
+	}
 
-  async onClose() {
-    // Nothing to clean up.
-  }
+	async onOpen() {
+		this.component = new Component({
+			target: this.contentEl,
+			props: {
+				variable: 1,
+			},
+		});
+	}
+
+	async onClose() {
+		this.component?.$destroy();
+	}
 }
