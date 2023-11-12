@@ -43,7 +43,7 @@ export const DEFAULT_SETTINGS: HighlightSettings = {
     idiomatic: {
         bg: '#E6E6FA',
         fg: 'black',
-        rank: 60100,
+        rank: 240000,
         enabled: true,
     },
 }

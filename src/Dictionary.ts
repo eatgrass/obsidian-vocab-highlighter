@@ -1,4 +1,4 @@
-import * as dict from '../assets/dict.json'
+import dict from '../assets/dict'
 
 const cache = new Map()
 
