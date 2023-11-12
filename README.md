@@ -1,5 +1,9 @@
-<h1 align="center">Vocabulary Highlighter</h1>
-<p align="center">highlight word according to the frequency</p>
+<h1 align="center">Vocabulary Highlighter for Obsidian</h1>
+<p align="center">highlight English words according to the frequency</p>
+
+## Introduction
+
+Enhance your reading and learning experience in Obsidian with the Vocabulary Highlighter. This plugin highlights words based on their frequency, aiding in English language learning and content review. Perfect for students, writers, and English language enthusiasts.
 
 ## Screenshots
 
@@ -7,12 +11,12 @@
 
 ## Settings
 
-1. Open the plugin's setting tab
-2. Setting up the highlight threshold and color
-3. You can also disable a certain highlight group
-4. reopen you file in `Reading View`, the words should be highlighted 
-5. you can also toggle current highlight by using command `Toggle Vocabulary Highlight`
+1. Navigate to the plugin's setting tab in Obsidian.
+2. Adjust the highlight threshold to control frequency sensitivity and select your preferred colors for different frequency ranges.
+3. Optionally disable certain highlight groups to tailor your focus.
+4. Reopen your files in Reading View to see the changes. Words will be highlighted based on your settings. 
+5. Use the `Toggle Vocabulary Highlight` command to conveniently turn highlighting on or off as needed.
 
 ## Commands
 
-`Toggle highlight`
+`Toggle Vocabulary Highlight`
