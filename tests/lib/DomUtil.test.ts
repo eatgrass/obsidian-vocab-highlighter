@@ -3,6 +3,8 @@
  */
 
 import { tokenize } from '../../src/lib/Tokenizer'
+import { query,hash } from '../../src/Dictionary'
+
 describe('forEachNode', () => {
     document.body.innerHTML =
         '<div> abcd' +
@@ -22,5 +24,14 @@ describe('forEachNode', () => {
             'more',
             '.',
         ])
+    })
+})
+
+describe('query dictionary', () => {
+
+    test('query a word', async () => {
+       
+        console.log(await query('hello'))
+        console.log(await query('hello'))
     })
 })
