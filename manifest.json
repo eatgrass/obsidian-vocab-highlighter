@@ -1,5 +1,5 @@
 {
-	"id": "vocab-hl-plugin",
+	"id": "vocabulary-highlighter",
 	"name": "Vocabulary Highlighter",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
