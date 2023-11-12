@@ -75,9 +75,10 @@ export default class HighlistSettingsTab extends PluginSettingTab {
                 })
             })
         })
+
         this.createHighlightSetting(containerEl, 'basic')
-        this.createHighlightSetting(containerEl, 'advanced')
         this.createHighlightSetting(containerEl, 'intermediate')
+        this.createHighlightSetting(containerEl, 'advanced')
         this.createHighlightSetting(containerEl, 'specialized')
         this.createHighlightSetting(containerEl, 'idiomatic')
     }
