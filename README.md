@@ -7,7 +7,7 @@ Enhance your reading and learning experience in Obsidian with the Vocabulary Hig
 
 ## Screenshots
 
-![Highlight](https://github.com/eatgrass/obsidian-vocab-highlighter/blob/ce70b061ae7732d0ccf93c06fb3b910d83453e29/assets/screenshot-1.png)
+![Highlight](https://github.com/eatgrass/obsidian-vocab-highlighter/blob/487a3ac1b5023d9f8146c18e01099c4a15d83395/assets/screenshot-1.png)
 
 ## Settings
 
