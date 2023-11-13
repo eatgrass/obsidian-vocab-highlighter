@@ -20,7 +20,7 @@ export default class VocabHighlighterPlugin extends Plugin {
             },
         })
 
-        // This adds a settings tab so the user can configure various aspects of the plugin
+		// setting tab
         this.addSettingTab(new HighlistSettingsTab({ plugin: this }))
     }
 

@@ -1,12 +1,6 @@
-import { Setting, PluginSettingTab, SliderComponent } from 'obsidian'
+import { Setting, PluginSettingTab } from 'obsidian'
 import type VocabHightlightPlugin from 'main'
-import {
-    getSettings,
-    updateSettings,
-    type HighlightSettings,
-    DEFAULT_SETTINGS,
-} from 'Settings'
-import { create } from 'domain'
+import { getSettings, updateSettings, DEFAULT_SETTINGS } from 'Settings'
 
 export default class HighlistSettingsTab extends PluginSettingTab {
     private plugin: VocabHightlightPlugin

@@ -1,7 +1,11 @@
-import { tokenize } from './Tokenizer'
 import { query } from '../Dictionary'
 import { type HighlightSettings } from 'Settings'
 
+const pattern = /([A-Za-zÀ-ÿ-]+|[0-9._]+|.|!|\?|'|"|:|;|,|-)/i
+
+const tokenize = (text: string | null): string[] => {
+    return text ? text.split(pattern).filter((s) => s !== '') : []
+}
 export const wrapTokens = async (
     el: Node,
     settings: HighlightSettings,
@@ -34,11 +38,11 @@ const createNodes = async (
     }
     // Create a span element
     const span = document.createElement('span')
-    span.textContent = token // Changed from setText to textContent
+    span.textContent = token
     span.className = 'vocab-hl'
 
-    // Determine the background color based on the rank
-    const getBgColor = () => {
+    // Determine the class name based on the rank
+    const getClassName = () => {
         const levels = [
             settings.basic,
             settings.intermediate,
@@ -57,11 +61,9 @@ const createNodes = async (
             }
         }
 
-        return '' // Default color if none of the conditions are met
+        return ''
     }
-    span.className = `vocab-hl ${getBgColor()}`
-
-    // span.style.background = getBgColor() || 'transparent' // Use default color if getColor returns null
+    span.className = `vocab-hl ${getClassName()}`
 
     return span
 }
