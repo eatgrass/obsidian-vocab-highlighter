@@ -46,12 +46,15 @@ export default class HighlistSettingsTab extends PluginSettingTab {
                 })
             })
             .addColorPicker((picker) => {
-                picker.setValue(getSettings()[category].bg)
-                picker.onChange((value) => {
-                    let s = getSettings()
+                let [r, g, b] = getSettings()[category].bg.split(',')
+                picker.setValueRgb({ r: +r, g: +g, b: +b })
+
+                picker.onChange(() => {
+                    const { r, g, b } = picker.getValueRgb()
                     updateSettings({
-                        [category]: { ...s[category], bg: value },
+                        [category]: { ...[category], bg: `${r}, ${g}, ${b}` },
                     })
+                    this.plugin.saveSettings()
                 })
             })
             .addToggle((toggle) => {
@@ -61,6 +64,7 @@ export default class HighlistSettingsTab extends PluginSettingTab {
                     updateSettings({
                         [category]: { ...s[category], enabled: value },
                     })
+                    this.plugin.saveSettings()
                 })
             })
     }
@@ -77,6 +81,7 @@ export default class HighlistSettingsTab extends PluginSettingTab {
                 updateSettings({
                     translucency: value,
                 })
+                this.plugin.saveSettings()
             })
         })
 
@@ -90,6 +95,7 @@ export default class HighlistSettingsTab extends PluginSettingTab {
             button.setButtonText('Reset')
             button.onClick(() => {
                 updateSettings(DEFAULT_SETTINGS)
+                this.plugin.saveSettings()
                 this.saveSettings(true)
             })
         })

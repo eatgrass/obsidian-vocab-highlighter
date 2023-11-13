@@ -1,4 +1,4 @@
-import {Plugin} from 'obsidian'
+import { Plugin } from 'obsidian'
 import { wrapTokens } from 'lib/DomUtil'
 import HighlistSettingsTab from 'SettingsTab'
 import { getSettings, updateSettings } from 'Settings'
@@ -17,8 +17,8 @@ export default class VocabHighlighterPlugin extends Plugin {
             id: 'toggle-vocab-highlight',
             name: 'Toggle Vocabulary Highlight',
             callback: () => {
-				toggleHighlight()
-			},
+                toggleHighlight()
+            },
         })
 
         // This adds a settings tab so the user can configure various aspects of the plugin

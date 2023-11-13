@@ -4,7 +4,7 @@ export interface HighlightSettings {
     advanced: Highlight
     specialized: Highlight
     idiomatic: Highlight
-	translucency: number
+    translucency: number
 }
 
 interface Highlight {
@@ -15,33 +15,33 @@ interface Highlight {
 }
 
 export const DEFAULT_SETTINGS: HighlightSettings = {
-	translucency: 0.5,
+    translucency: 0.5,
     basic: {
-        bg: '#98FF98',
+        bg: '68, 207, 110',
         fg: 'black',
         rank: 3000,
         enabled: true,
     },
     intermediate: {
-        bg: '#87CEEB',
+        bg: '83, 223, 221',
         fg: 'black',
         rank: 8000,
         enabled: true,
     },
     advanced: {
-        bg: '#FFD700',
+        bg: '233, 151, 63',
         fg: 'black',
         rank: 16000,
         enabled: true,
     },
     specialized: {
-        bg: '#FF7F50',
+        bg: '2, 122, 255',
         fg: 'black',
         rank: 25000,
         enabled: true,
     },
     idiomatic: {
-        bg: '#E6E6FA',
+        bg: '168, 130, 255',
         fg: 'black',
         rank: 240000,
         enabled: true,
@@ -56,5 +56,22 @@ export const updateSettings = (
     updated: Partial<HighlightSettings>,
 ): HighlightSettings => {
     settings = { ...settings, ...updated }
+    document.documentElement.style.setProperty(
+        '--vocab-hl-opacity',
+        settings.translucency.toString(),
+    )
+    const levels: (
+        | 'basic'
+        | 'intermediate'
+        | 'advanced'
+        | 'specialized'
+        | 'idiomatic'
+    )[] = ['basic', 'intermediate', 'advanced', 'specialized', 'idiomatic']
+    for (let level of levels) {
+        document.documentElement.style.setProperty(
+            `--vocab-hl-${level}`,
+            settings[level].bg,
+        )
+    }
     return settings
 }

@@ -32,11 +32,10 @@ const createNodes = async (
     if (!rank) {
         return document.createTextNode(token)
     }
-
     // Create a span element
     const span = document.createElement('span')
     span.textContent = token // Changed from setText to textContent
-    span.className = 'vocab-span'
+    span.className = 'vocab-hl'
 
     // Determine the background color based on the rank
     const getBgColor = () => {
@@ -48,25 +47,21 @@ const createNodes = async (
             settings.idiomatic,
         ]
 
-        for (const level of levels) {
-            if (rank < level.rank) {
-                if (level.enabled) {
-                    return (
-                        level.bg +
-                        Math.ceil(settings.translucency * 255)
-                            .toString(16)
-                            .toUpperCase()
-                    )
+        for (let i = 0; i < levels.length; i++) {
+            if (rank < levels[i].rank) {
+                if (levels[i].enabled) {
+                    return `vocab-hl-${i + 1}`
                 } else {
-                    return 'transparent'
+                    return ''
                 }
             }
         }
 
-        return 'transparent' // Default color if none of the conditions are met
+        return '' // Default color if none of the conditions are met
     }
+    span.className = `vocab-hl ${getBgColor()}`
 
-    span.style.background = getBgColor() || 'transparent' // Use default color if getColor returns null
+    // span.style.background = getBgColor() || 'transparent' // Use default color if getColor returns null
 
     return span
 }

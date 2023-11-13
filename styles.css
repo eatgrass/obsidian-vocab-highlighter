@@ -1,3 +1,28 @@
-.vocab-hl-disabled {
-	background: transparent !important;
+:root {
+    --vocab-hl-opacity: 0.5;
+    --vocab-hl-basic: 68, 207, 110;
+    --vocab-hl-intemediate: 83, 223, 221;
+    --vocab-hl-advanced: 233, 151, 63;
+    --vocab-hl-specialized: 2, 122, 255;
+    --vocab-hl-idiomatic: 168, 130, 255;
+}
+
+.vocab-hl.vocab-hl-1 {
+    background-color: rgba(var(--vocab-hl-basic), var(--vocab-hl-opacity));
+}
+
+.vocab-hl.vocab-hl-2 {
+    background-color: rgba(var(--vocab-hl-intemediate), var(--vocab-hl-opacity));
+}
+
+.vocab-hl.vocab-hl-3 {
+    background-color: rgba(var(--vocab-hl-advanced), var(--vocab-hl-opacity));
+}
+
+.vocab-hl.vocab-hl-4 {
+    background-color: rgba(var(--vocab-hl-specialized), var(--vocab-hl-opacity));
+}
+
+.vocab-hl.vocab-hl-5 {
+    background-color: rgba(var(--vocab-hl-idiomatic), var(--vocab-hl-opacity));
 }
