@@ -1,5 +1,5 @@
 import { Plugin } from 'obsidian'
-import { wrapTokens } from 'lib/DomUtil'
+import { wrapTokens } from 'Highlighter'
 import HighlistSettingsTab from 'SettingsTab'
 import { getSettings, updateSettings } from 'Settings'
 

@@ -1,3 +1,5 @@
+import { rerender } from "Highlighter"
+
 export interface HighlightSettings {
     basic: Highlight
     intermediate: Highlight
@@ -58,28 +60,7 @@ export const updateSettings = (
     updated: Partial<HighlightSettings>,
 ): HighlightSettings => {
     settings = { ...settings, ...updated }
-    document.documentElement.style.setProperty(
-        '--vocab-hl-opacity',
-        settings.translucency.toString(),
-    )
-    const levels: (
-        | 'basic'
-        | 'intermediate'
-        | 'advanced'
-        | 'specialized'
-        | 'idiomatic'
-    )[] = ['basic', 'intermediate', 'advanced', 'specialized', 'idiomatic']
 
-    for (let level of levels) {
-        document.documentElement.style.setProperty(
-            `--vocab-hl-${level}`,
-            settings[level].bg,
-        )
-    }
-
-    if (!settings.enabled) {
-        document.documentElement.style.setProperty('--vocab-hl-opacity', '0')
-    }
-
+	rerender(settings)
     return settings
 }

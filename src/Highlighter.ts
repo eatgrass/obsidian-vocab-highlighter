@@ -1,4 +1,4 @@
-import { query } from '../Dictionary'
+import { query } from 'Dictionary'
 import { type HighlightSettings } from 'Settings'
 
 const pattern = /([A-Za-zÀ-ÿ-]+|[0-9._]+|.|!|\?|'|"|:|;|,|-)/i
@@ -51,6 +51,7 @@ const createNodes = async (
             settings.idiomatic,
         ]
 
+        span.dataset.rank = `${rank}`
         for (let i = 0; i < levels.length; i++) {
             if (rank < levels[i].rank) {
                 if (levels[i].enabled) {
@@ -66,4 +67,47 @@ const createNodes = async (
     span.className = `vocab-hl ${getClassName()}`
 
     return span
+}
+
+export const rerender = (settings: HighlightSettings) => {
+    const levels: (
+        | 'basic'
+        | 'intermediate'
+        | 'advanced'
+        | 'specialized'
+        | 'idiomatic'
+    )[] = ['basic', 'intermediate', 'advanced', 'specialized', 'idiomatic']
+
+    for (let i = 0; i < levels.length; i++) {
+        // set background color
+        document.documentElement.style.setProperty(
+            `--vocab-hl-${levels[i]}`,
+            settings[levels[i]].bg,
+        )
+
+        // set opacity
+        document.documentElement.style.setProperty(
+            `--vocab-hl-${levels[i]}-opacity`,
+            `${settings.translucency}`,
+        )
+
+        if (!settings[levels[i]].enabled || !settings.enabled) {
+            document.documentElement.style.setProperty(
+                `--vocab-hl-${levels[i]}-opacity`,
+                '0',
+            )
+        }
+    }
+
+    // FIXME: only rank changed
+    const words = document.querySelectorAll('.vocab-hl[data-rank]')
+    words.forEach((word) => {
+        let rankstr = word.getAttribute('data-rank')
+        for (let i = 0; i < levels.length; i++) {
+            if (rankstr && parseInt(rankstr) < settings[levels[i]].rank) {
+                word.className = `vocab-hl vocab-hl-${i + 1}`
+                break
+            }
+        }
+    })
 }
