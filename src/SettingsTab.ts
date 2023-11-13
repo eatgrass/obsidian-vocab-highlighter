@@ -45,8 +45,9 @@ export default class HighlistSettingsTab extends PluginSettingTab {
 
                 picker.onChange(() => {
                     const { r, g, b } = picker.getValueRgb()
+                    let s = getSettings()
                     updateSettings({
-                        [category]: { ...[category], bg: `${r}, ${g}, ${b}` },
+                        [category]: { ...s[category], bg: `${r}, ${g}, ${b}` },
                     })
                     this.plugin.saveSettings()
                 })
