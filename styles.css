@@ -1,11 +1,11 @@
 :root {
     --vocab-hl-basic-opacity: 0.5;
-    --vocab-hl-intemediate-opacity: 0.5;
+    --vocab-hl-intermediate-opacity: 0.5;
     --vocab-hl-advanced-opacity: 0.5;
     --vocab-hl-specialized-opacity: 0.5;
     --vocab-hl-idiomatic-opacity: 0.5;
     --vocab-hl-basic: 68, 207, 110;
-    --vocab-hl-intemediate: 83, 223, 221;
+    --vocab-hl-intermediate: 83, 223, 221;
     --vocab-hl-advanced: 233, 151, 63;
     --vocab-hl-specialized: 2, 122, 255;
     --vocab-hl-idiomatic: 168, 130, 255;
@@ -20,8 +20,8 @@
 
 .vocab-hl.vocab-hl-2 {
     background-color: rgba(
-        var(--vocab-hl-intemediate),
-        var(--vocab-hl-intemediate-opacity)
+        var(--vocab-hl-intermediate),
+        var(--vocab-hl-intermediate-opacity)
     );
 }
 
