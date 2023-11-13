@@ -2,7 +2,6 @@ import { Plugin } from 'obsidian'
 import { wrapTokens } from 'lib/DomUtil'
 import HighlistSettingsTab from 'SettingsTab'
 import { getSettings, updateSettings } from 'Settings'
-import { toggleHighlight } from 'Commands'
 
 export default class VocabHighlighterPlugin extends Plugin {
     async onload() {
@@ -15,9 +14,9 @@ export default class VocabHighlighterPlugin extends Plugin {
         // toogle highlight command
         this.addCommand({
             id: 'toggle-vocab-highlight',
-            name: 'Toggle Vocabulary Highlight',
+            name: 'Toggle highlight',
             callback: () => {
-                toggleHighlight()
+                updateSettings({ enabled: !getSettings().enabled })
             },
         })
 

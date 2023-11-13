@@ -73,6 +73,17 @@ export default class HighlistSettingsTab extends PluginSettingTab {
         const { containerEl } = this
         containerEl.empty()
         containerEl.createEl('h3', { text: 'Hightlight Settings' })
+
+        new Setting(containerEl).setName('Enabled').addToggle((toggle) => {
+            toggle.setValue(getSettings().enabled)
+            toggle.onChange((value) => {
+                updateSettings({
+                    enabled: value,
+                })
+                this.plugin.saveSettings()
+            })
+        })
+
         new Setting(containerEl).setName('Translucency').addSlider((slide) => {
             slide.setDynamicTooltip()
             slide.setLimits(0, 1, 0.05)

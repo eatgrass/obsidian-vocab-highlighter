@@ -5,6 +5,7 @@ export interface HighlightSettings {
     specialized: Highlight
     idiomatic: Highlight
     translucency: number
+    enabled: boolean
 }
 
 interface Highlight {
@@ -16,6 +17,7 @@ interface Highlight {
 
 export const DEFAULT_SETTINGS: HighlightSettings = {
     translucency: 0.5,
+    enabled: true,
     basic: {
         bg: '68, 207, 110',
         fg: 'black',
@@ -67,11 +69,17 @@ export const updateSettings = (
         | 'specialized'
         | 'idiomatic'
     )[] = ['basic', 'intermediate', 'advanced', 'specialized', 'idiomatic']
+
     for (let level of levels) {
         document.documentElement.style.setProperty(
             `--vocab-hl-${level}`,
             settings[level].bg,
         )
     }
+
+    if (!settings.enabled) {
+        document.documentElement.style.setProperty('--vocab-hl-opacity', '0')
+    }
+
     return settings
 }
