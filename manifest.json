@@ -1,7 +1,7 @@
 {
 	"id": "vocabulary-highlighter",
 	"name": "Vocabulary Highlighter",
-	"version": "1.0.1",
+	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
 	"description": "This plugin hightlight vocabulary based on the word frequency",
 	"author": "eatgrass",
