@@ -81,7 +81,7 @@ export const rerender = (settings: HighlightSettings) => {
     for (let i = 0; i < levels.length; i++) {
         // set background color
         document.documentElement.style.setProperty(
-            `--vocab-hl-${levels[i]}`,
+            `--vocab-hl-${levels[i+1]}`,
             settings[levels[i]].bg,
         )
 
