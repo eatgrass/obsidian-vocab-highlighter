@@ -78,8 +78,6 @@ export const rerender = (settings: HighlightSettings) => {
         | 'idiomatic'
     )[] = ['basic', 'intermediate', 'advanced', 'specialized', 'idiomatic']
 
-	console.log(settings)
-
     for (let i = 0; i < levels.length; i++) {
         // set background color
         document.documentElement.style.setProperty(
