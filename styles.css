@@ -11,12 +11,22 @@
     --vocab-hl-idiomatic: 168, 130, 255;
 }
 
+.vocab-hl {
+	border-radius: 3px;
+}
+
+.vocab-hl:hover {
+	/* box-shadow: 0 0 9px 2px #555; */
+	filter: brightness(140%);
+}
+
 .vocab-hl.vocab-hl-1 {
     background-color: rgba(
         var(--vocab-hl-basic),
         var(--vocab-hl-basic-opacity)
     );
 }
+
 
 .vocab-hl.vocab-hl-2 {
     background-color: rgba(
@@ -45,3 +55,4 @@
         var(--vocab-hl-idiomatic-opacity)
     );
 }
+
