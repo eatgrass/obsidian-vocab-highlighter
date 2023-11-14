@@ -12,12 +12,12 @@
 }
 
 .vocab-hl {
-	border-radius: 3px;
+    border-radius: 3px;
 }
 
 .vocab-hl:hover {
-	/* box-shadow: 0 0 9px 2px #555; */
-	filter: brightness(140%);
+    /* box-shadow: 0 0 9px 2px #555; */
+    filter: brightness(140%);
 }
 
 .vocab-hl.vocab-hl-1 {
@@ -26,7 +26,6 @@
         var(--vocab-hl-basic-opacity)
     );
 }
-
 
 .vocab-hl.vocab-hl-2 {
     background-color: rgba(
@@ -56,3 +55,55 @@
     );
 }
 
+[data-rank] {
+    display: inline-block;
+    position: relative;
+    --carat-size: 5px;
+    --offset: 0.5rem;
+    --tooltip-position: calc(100% + var(--offset));
+    --carat-position: calc(100% + var(--offset) - var(--carat-size) / 2);
+}
+
+[data-rank]::before,
+[data-rank]::after {
+    opacity: 0;
+    pointer-events: none;
+    display: block;
+    position: absolute;
+    pointer-events: none;
+    transition: opacity 0.3s ease-out;
+}
+
+[data-rank]::before {
+    content: '';
+    background-color: black;
+    height: var(--carat-size);
+    width: var(--carat-size);
+    opacity: 0;
+    bottom: var(--carat-position);
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+[data-rank]::after {
+    content: attr(data-rank);
+    color: rgb(131,225,200);
+    background-color: black;
+    padding: 0.5rem;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 10;
+    opacity: 0;
+    bottom: var(--tooltip-position);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+[data-rank]:active::before,
+[data-rank]:active::after,
+[data-rank]:focus-within::before,
+[data-rank]:focus-within::after {
+    display: block;
+    opacity: 1;
+    pointer-events: unset;
+}
