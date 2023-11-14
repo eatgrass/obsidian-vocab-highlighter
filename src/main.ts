@@ -11,6 +11,9 @@ export default class VocabHighlighterPlugin extends Plugin {
 
         await this.loadSettings()
 
+        this.addRibbonIcon('highlighter', 'Highlight vocabulary', () => {
+            updateSettings({ enabled: !getSettings().enabled })
+        })
         // toogle highlight command
         this.addCommand({
             id: 'toggle-vocab-highlight',
@@ -20,7 +23,7 @@ export default class VocabHighlighterPlugin extends Plugin {
             },
         })
 
-		// setting tab
+        // setting tab
         this.addSettingTab(new HighlistSettingsTab({ plugin: this }))
     }
 
