@@ -21,31 +21,31 @@ export const DEFAULT_SETTINGS: HighlightSettings = {
     translucency: 0.5,
     enabled: true,
     basic: {
-        bg: '68, 207, 110',
+        bg: '48, 51, 64',
         fg: 'black',
-        rank: 3000,
+        rank: 6000,
         enabled: true,
     },
     intermediate: {
-        bg: '83, 223, 221',
+        bg: '208, 103, 157',
         fg: 'black',
-        rank: 8000,
+        rank: 16500,
         enabled: true,
     },
     advanced: {
-        bg: '233, 151, 63',
+        bg: '95, 179, 161',
         fg: 'black',
-        rank: 16000,
+        rank: 30000,
         enabled: true,
     },
     specialized: {
-        bg: '2, 122, 255',
+        bg: '173, 215, 255',
         fg: 'black',
-        rank: 25000,
+        rank: 45000,
         enabled: true,
     },
     idiomatic: {
-        bg: '168, 130, 255',
+        bg: '115, 144, 170',
         fg: 'black',
         rank: 240000,
         enabled: true,
@@ -60,6 +60,7 @@ export const updateSettings = (
     updated: Partial<HighlightSettings>,
 ): HighlightSettings => {
     settings = { ...settings, ...updated }
+	console.log(settings)
 
 	rerender(settings)
     return settings
