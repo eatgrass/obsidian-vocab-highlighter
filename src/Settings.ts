@@ -8,6 +8,7 @@ export interface HighlightSettings {
     idiomatic: Highlight
     translucency: number
     enabled: boolean
+	globalProcessor: boolean,
 }
 
 interface Highlight {
@@ -18,8 +19,10 @@ interface Highlight {
 }
 
 export const DEFAULT_SETTINGS: HighlightSettings = {
+
     translucency: 0.5,
     enabled: true,
+	globalProcessor: true,
     basic: {
         bg: '48, 51, 64',
         fg: 'black',

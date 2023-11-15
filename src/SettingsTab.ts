@@ -16,7 +16,11 @@ export default class HighlistSettingsTab extends PluginSettingTab {
             this.display()
         }
     }
-
+    private static createFragmentWithHTML = (html: string) =>
+        createFragment(
+            (documentFragment) =>
+                (documentFragment.createDiv().innerHTML = html),
+        )
     private createHighlightSetting(
         containerEl: HTMLElement,
         category:
@@ -69,15 +73,26 @@ export default class HighlistSettingsTab extends PluginSettingTab {
         containerEl.empty()
         containerEl.createEl('h3', { text: 'Hightlight Settings' })
 
-        new Setting(containerEl).setName('Enabled').addToggle((toggle) => {
-            toggle.setValue(getSettings().enabled)
-            toggle.onChange((value) => {
-                updateSettings({
-                    enabled: value,
+        new Setting(containerEl)
+            .setName('Global highlight processor')
+            .setDesc(
+                HighlistSettingsTab.createFragmentWithHTML(
+                    '<p>Whether highlight processor should be applied to all documents.</p>' +
+                        '<p>Disabling this then you can add <strong><i>enable-vocab-hl</i></strong> to <strong><i>cssclasses</i></strong> in your frontmatter<br>' +
+                        'to enable processor for certain documents.</p>' +
+                        '<p>Sometimes, it may be necessary to reopen a file to allow the processor to reapply the highlights</p>' +
+                        '<p><b> Important: <code>toggle highlight</code> command can only affects the documents that have been processed. </b></p>',
+                ),
+            )
+            .addToggle((toggle) => {
+                toggle.setValue(getSettings().globalProcessor)
+                toggle.onChange((value) => {
+                    updateSettings({
+                        globalProcessor: value,
+                    })
+                    this.plugin.saveSettings()
                 })
-                this.plugin.saveSettings()
             })
-        })
 
         new Setting(containerEl).setName('Translucency').addSlider((slide) => {
             slide.setDynamicTooltip()

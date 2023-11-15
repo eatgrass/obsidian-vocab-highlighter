@@ -1,18 +1,22 @@
-import { MarkdownRenderChild, Plugin } from 'obsidian'
+import { Plugin } from 'obsidian'
 import { wrapTokens } from 'Highlighter'
 import HighlistSettingsTab from 'SettingsTab'
 import { getSettings, updateSettings } from 'Settings'
 
 export default class VocabHighlighterPlugin extends Plugin {
     async onload() {
-        this.registerMarkdownPostProcessor((element, ctx) => {
-			let {cssclasses} = ctx.frontmatter
-			if(cssclasses && cssclasses.includes("vocab_hl_enabled")) {
-				wrapTokens(element, getSettings())
-			}
-        })
-
         await this.loadSettings()
+
+        this.registerMarkdownPostProcessor((element, ctx) => {
+            const settings = getSettings()
+            const { cssclasses } = ctx.frontmatter
+            const sholdProcess: boolean =
+                settings.globalProcessor ||
+                !!cssclasses?.includes('enable-vocab-hl')
+            if (sholdProcess) {
+                wrapTokens(element, settings)
+            }
+        })
 
         this.addRibbonIcon('highlighter', 'Highlight vocabulary', () => {
             updateSettings({ enabled: !getSettings().enabled })
