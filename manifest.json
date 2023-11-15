@@ -6,6 +6,7 @@
 	"description": "This plugin hightlight vocabulary based on the word frequency",
 	"author": "eatgrass",
 	"repo": "eatgrass/obsidian-vocab-highlighter",
+	"fundingUrl": "https://www.buymeacoffee.com/eatgrass",
 	"authorUrl": "https://github.com/eatgrass",
 	"isDesktopOnly": false
 }
