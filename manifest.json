@@ -3,7 +3,7 @@
 	"name": "Vocabulary Highlighter",
 	"version": "1.0.5",
 	"minAppVersion": "0.15.0",
-	"description": "This plugin hightlight vocabulary based on the word frequency",
+	"description": "hightlight vocabulary based on the word frequency",
 	"author": "eatgrass",
 	"repo": "eatgrass/obsidian-vocab-highlighter",
 	"fundingUrl": "https://www.buymeacoffee.com/eatgrass",

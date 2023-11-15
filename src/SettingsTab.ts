@@ -1,6 +1,7 @@
 import { Setting, PluginSettingTab } from 'obsidian'
 import type VocabHightlightPlugin from 'main'
 import { getSettings, updateSettings, DEFAULT_SETTINGS } from 'Settings'
+import { getSettingDesc } from 'utils'
 
 export default class HighlistSettingsTab extends PluginSettingTab {
     private plugin: VocabHightlightPlugin
@@ -16,11 +17,7 @@ export default class HighlistSettingsTab extends PluginSettingTab {
             this.display()
         }
     }
-    private static createFragmentWithHTML = (html: string) =>
-        createFragment(
-            (documentFragment) =>
-                (documentFragment.createDiv().innerHTML = html),
-        )
+
     private createHighlightSetting(
         containerEl: HTMLElement,
         category:
@@ -71,19 +68,11 @@ export default class HighlistSettingsTab extends PluginSettingTab {
     public display() {
         const { containerEl } = this
         containerEl.empty()
-        containerEl.createEl('h3', { text: 'Hightlight Settings' })
+        containerEl.createEl('h3', { text: 'Hightlight settings' })
 
         new Setting(containerEl)
             .setName('Global highlight processor')
-            .setDesc(
-                HighlistSettingsTab.createFragmentWithHTML(
-                    '<p>Whether highlight processor should be applied to all documents.</p>' +
-                        '<p>Disabling this then you can add <strong><i>enable-vocab-hl</i></strong> to <strong><i>cssclasses</i></strong> in your frontmatter<br>' +
-                        'to enable processor for certain documents.</p>' +
-                        '<p>Sometimes, it may be necessary to reopen a file to allow the processor to reapply the highlights</p>' +
-                        '<p><b> Important: <code>toggle highlight</code> command can only affects the documents that have been processed. </b></p>',
-                ),
-            )
+            .setDesc(createFragment(getSettingDesc))
             .addToggle((toggle) => {
                 toggle.setValue(getSettings().globalProcessor)
                 toggle.onChange((value) => {
