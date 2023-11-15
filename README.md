@@ -23,4 +23,4 @@ Enhance your reading and learning experience in Obsidian with the Vocabulary Hig
 
 ## Thanks
 
-[!["Buy Me A Coffee"](https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=eatgrass&button_colour=FFDD00&font_colour=000000&font_family=Comic&outline_colour=000000&coffee_colour=ffffff)](https://www.buymeacoffee.com/eatgrass)
+[![coffee](https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=%E2%98%95&slug=eatgrass&button_colour=FFDD00&font_colour=000000&font_family=Comic&outline_colour=000000&coffee_colour=ffffff)](https://www.buymeacoffee.com/eatgrass)
