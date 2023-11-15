@@ -68,7 +68,6 @@ export default class HighlistSettingsTab extends PluginSettingTab {
     public display() {
         const { containerEl } = this
         containerEl.empty()
-        containerEl.createEl('h3', { text: 'Hightlight settings' })
 
         new Setting(containerEl)
             .setName('Global highlight processor')
