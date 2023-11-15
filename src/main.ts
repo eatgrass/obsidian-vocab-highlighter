@@ -9,7 +9,7 @@ export default class VocabHighlighterPlugin extends Plugin {
 
         this.registerMarkdownPostProcessor((element, ctx) => {
             const settings = getSettings()
-            const { cssclasses } = ctx.frontmatter
+            const { cssclasses } = ctx.frontmatter || { cssclasses: [] }
             const sholdProcess: boolean =
                 settings.globalProcessor ||
                 !!cssclasses?.includes('enable-vocab-hl')
