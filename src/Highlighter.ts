@@ -1,6 +1,5 @@
 import { query } from 'Dictionary'
 import { type HighlightSettings } from 'Settings'
-
 const pattern = /([A-Za-zÀ-ÿ-]+|[0-9._]+|.|!|\?|'|"|:|;|,|-)/i
 
 const tokenize = (text: string | null): string[] => {
@@ -26,6 +25,7 @@ export const wrapTokens = async (
         }
     }
 }
+
 const createNodes = async (
     token: string,
     settings: HighlightSettings,
@@ -77,6 +77,24 @@ export const rerender = (settings: HighlightSettings) => {
         | 'specialized'
         | 'idiomatic'
     )[] = ['basic', 'intermediate', 'advanced', 'specialized', 'idiomatic']
+
+	let tooltip = 'block'
+	let hover = '140%'
+
+	if(!settings.enabled) {
+		tooltip = 'none'
+		hover = '100%'
+	}
+
+	document.documentElement.style.setProperty(
+		'--vocab-hl-tooltip',
+		tooltip,
+	)
+
+	document.documentElement.style.setProperty(
+		'--voab-hl-hover-brightness',
+		hover,
+	)
 
     for (let i = 0; i < levels.length; i++) {
         // set background color

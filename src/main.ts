@@ -1,12 +1,15 @@
-import { Plugin } from 'obsidian'
+import { MarkdownRenderChild, Plugin } from 'obsidian'
 import { wrapTokens } from 'Highlighter'
 import HighlistSettingsTab from 'SettingsTab'
 import { getSettings, updateSettings } from 'Settings'
 
 export default class VocabHighlighterPlugin extends Plugin {
     async onload() {
-        this.registerMarkdownPostProcessor((element) => {
-            wrapTokens(element, getSettings())
+        this.registerMarkdownPostProcessor((element, ctx) => {
+			let {cssclasses} = ctx.frontmatter
+			if(cssclasses && cssclasses.includes("vocab_hl_enabled")) {
+				wrapTokens(element, getSettings())
+			}
         })
 
         await this.loadSettings()

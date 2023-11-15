@@ -9,6 +9,8 @@
     --vocab-hl-advanced: 233, 151, 63;
     --vocab-hl-specialized: 2, 122, 255;
     --vocab-hl-idiomatic: 168, 130, 255;
+	--vocab-hl-tooltip: none;
+	--voab-hl-hover-brightness: 140%;
 }
 
 .vocab-hl {
@@ -16,8 +18,8 @@
 }
 
 .vocab-hl:hover {
-    /* box-shadow: 0 0 9px 2px #555; */
-    filter: brightness(140%);
+    filter: brightness(var(--voab-hl-hover-brightness));
+	
 }
 
 .vocab-hl.vocab-hl-1 {
@@ -103,7 +105,7 @@
 [data-rank]:active::after,
 [data-rank]:focus-within::before,
 [data-rank]:focus-within::after {
-    display: block;
+    display: var(--vocab-hl-tooltip);
     opacity: 1;
     pointer-events: unset;
 }
