@@ -60,8 +60,6 @@ export const updateSettings = (
     updated: Partial<HighlightSettings>,
 ): HighlightSettings => {
     settings = { ...settings, ...updated }
-	console.log(settings)
-
 	rerender(settings)
     return settings
 }
