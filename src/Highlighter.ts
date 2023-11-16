@@ -78,7 +78,7 @@ export const rerender = (settings: HighlightSettings) => {
         | 'idiomatic'
     )[] = ['basic', 'intermediate', 'advanced', 'specialized', 'idiomatic']
 
-	let tooltip = 'block'
+	let tooltip = 'inline'
 	let hover = '140%'
 
 	if(!settings.enabled) {
