@@ -1,12 +1,11 @@
-import { Menu, Notice, Plugin, TFile, setTooltip } from 'obsidian'
+import { Plugin, setTooltip } from 'obsidian'
 import { wrapTokens } from 'Highlighter'
 import HighlistSettingsTab from 'SettingsTab'
 import { getSettings, updateSettings } from 'Settings'
+import { Platform } from 'obsidian'
 
 export default class VocabHighlighterPlugin extends Plugin {
-
     async onload() {
-
         await this.loadSettings()
 
         this.registerMarkdownPostProcessor((element, ctx) => {
@@ -15,7 +14,7 @@ export default class VocabHighlighterPlugin extends Plugin {
             const sholdProcess: boolean =
                 settings.globalProcessor ||
                 !!cssclasses?.includes('enable-vocab-hl')
-            if (sholdProcess) {
+            if (sholdProcess && Platform.isDesktopApp) {
                 wrapTokens(element, settings)
                 element.addEventListener('click', (e) => {
                     if (e.target instanceof HTMLElement && settings.enabled) {
