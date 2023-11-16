@@ -16,13 +16,14 @@ export default class VocabHighlighterPlugin extends Plugin {
                 !!cssclasses?.includes('enable-vocab-hl')
             if (sholdProcess && Platform.isDesktopApp) {
                 wrapTokens(element, settings)
-                element.addEventListener('click', (e) => {
+                element.addEventListener('mouseover', (e) => {
+					console.log(settings.enabled)
                     if (e.target instanceof HTMLElement && settings.enabled) {
                         const ele = e.target as HTMLElement
                         let { rank } = ele.dataset
                         if (rank) {
                             setTooltip(ele, rank, {
-                                delay: 1500,
+                                delay: 500,
                                 placement: 'top',
                             })
                         }
