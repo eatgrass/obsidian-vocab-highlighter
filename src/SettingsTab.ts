@@ -4,6 +4,7 @@ import { getSettings, updateSettings, DEFAULT_SETTINGS } from 'Settings'
 import { getSettingDesc } from 'utils'
 
 export default class HighlistSettingsTab extends PluginSettingTab {
+
     private plugin: VocabHightlightPlugin
 
     constructor({ plugin }: { plugin: VocabHightlightPlugin }) {

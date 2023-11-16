@@ -4,7 +4,9 @@ import HighlistSettingsTab from 'SettingsTab'
 import { getSettings, updateSettings } from 'Settings'
 
 export default class VocabHighlighterPlugin extends Plugin {
+
     async onload() {
+
         await this.loadSettings()
 
         this.registerMarkdownPostProcessor((element, ctx) => {
@@ -16,7 +18,7 @@ export default class VocabHighlighterPlugin extends Plugin {
             if (sholdProcess) {
                 wrapTokens(element, settings)
                 element.addEventListener('mouseover', (e) => {
-                    if (e.target instanceof HTMLElement) {
+                    if (e.target instanceof HTMLElement && settings.enabled) {
                         const ele = e.target as HTMLElement
                         let { rank } = ele.dataset
                         if (rank) {
